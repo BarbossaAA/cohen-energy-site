@@ -311,7 +311,7 @@ footer{margin-top:clamp(20px,3vh,32px);font-size:.73rem;color:rgba(226,236,250,.
         <div class="tile"><b class="num" id="kwhToday">0<em>kWh</em></b><span>מאז הזריחה היום</span></div>
       </div>
 
-      <p class="live__note">הדמיה חיה לפי מיקום השמש בישראל ברגע זה, למערכת ביתית של 15 קילוואט</p>
+      <p class="live__note">הדמיה חיה לפי מיקום השמש בישראל ברגע זה, למערכת ביתית של 22.61 קילוואט</p>
     </div>
   </section>
 
@@ -353,7 +353,7 @@ var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
    1. שמש אמיתית: גובה וזווית לפי השעה, זריחה ושקיעה בישראל
    ===================================================================== */
 var LAT = 31.7683, LON = 35.2137, TZ = 'Asia/Jerusalem';
-var SYSTEM_KWP = 15;
+var SYSTEM_KWP = 22.61;   /* 34 פאנלים של 665W */
 
 function sunAltitude(ms){
   var rad = Math.PI/180;
