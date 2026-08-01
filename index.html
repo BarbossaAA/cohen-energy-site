@@ -5,10 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>כהן מערכות אנרגיה | האתר בשיפוצים, נחזור בקרוב</title>
 <meta name="description" content="האתר של כהן מערכות אנרגיה בשיפוצים ונחזור בקרוב. בינתיים אנחנו כאן בטלפון ובוואטסאפ, לכל שאלה על מערכת סולארית לבית ולעסק.">
-<meta name="theme-color" content="#050B18">
+<meta name="theme-color" content="#F2F9FF">
 <meta name="format-detection" content="telephone=no">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <link rel="canonical" href="https://cohen-energy.com/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="כהן מערכות אנרגיה">
@@ -22,7 +21,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://cohen-energy.com/assets/og.jpg">
 
-<link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><circle cx="24" cy="24" r="11" fill="%23F0A72B"/><g stroke="%23F0A72B" stroke-width="3.4" stroke-linecap="round"><line x1="24" y1="3" x2="24" y2="10"/><line x1="24" y1="38" x2="24" y2="45"/><line x1="3" y1="24" x2="10" y2="24"/><line x1="38" y1="24" x2="45" y2="24"/><line x1="9" y1="9" x2="14" y2="14"/><line x1="34" y1="34" x2="39" y2="39"/><line x1="9" y1="39" x2="14" y2="34"/><line x1="34" y1="14" x2="39" y2="9"/></g><path d="M21 19h8l-4.5 9h-4.5l3.4-6.7H21z" fill="%230A1B33"/></svg>'>
+<link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="%230EA5E9"/><stop offset="1" stop-color="%2322C55E"/></linearGradient></defs><circle cx="24" cy="24" r="11" fill="url(%23g)"/><g stroke="%2338BDF8" stroke-width="3.4" stroke-linecap="round"><line x1="24" y1="3" x2="24" y2="10"/><line x1="24" y1="38" x2="24" y2="45"/><line x1="3" y1="24" x2="10" y2="24"/><line x1="38" y1="24" x2="45" y2="24"/><line x1="9" y1="9" x2="14" y2="14"/><line x1="34" y1="34" x2="39" y2="39"/><line x1="9" y1="39" x2="14" y2="34"/><line x1="34" y1="14" x2="39" y2="9"/></g><path d="M21 19h8l-4.5 9h-4.5l3.4-6.7H21z" fill="%23FFFFFF"/></svg>'>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -42,28 +41,39 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
 <style>
 /* ===================== בסיס ===================== */
 :root{
-  --navy-950:#050B18;
-  --navy-900:#08142A;
-  --navy-800:#0E2246;
-  --gold:#F0A72B;
-  --gold-deep:#D98E0B;
-  --sun:#FFC94D;
-  --ice:#F4F7FC;
-  --wa:#22B75B;
+  --white:#FFFFFF;
+  --paper:#F2F9FF;
+  --sky-50:#EAF6FF;
+  --sky-100:#D7ECFC;
+  --sky-200:#BAE0FA;
+  --sky-300:#7DD3FC;
+  --sky-400:#38BDF8;
+  --sky-500:#0EA5E9;
+  --sky-600:#0284C7;
+  --green-300:#86EFAC;
+  --green-400:#4ADE80;
+  --green-500:#22C55E;
+  --green-600:#16A34A;
+  --green-700:#15803D;
+  --ink:#0B2A44;
+  --ink-2:#33566F;
+  --muted:#527690;   /* מכוון לניגודיות AA על רקע לבן */
+  --line:#DCEAF6;
+  --head-h:64px;
 
   /* מיקום השמש בשמיים, מתעדכן מהשעה האמיתית */
   --sx:78%;
-  --sy:24%;
-  --glow:rgba(240,167,43,.34);
-  --glow2:rgba(255,201,77,.16);
+  --sy:22%;
+  --warm:rgba(255,214,150,.34);
+  --cool:rgba(125,211,252,.42);
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 body{
   min-height:100dvh;
   font-family:'Heebo','Assistant','Segoe UI',Arial,sans-serif;
-  background:var(--navy-950);
-  color:var(--ice);
+  background:var(--paper);
+  color:var(--ink);
   line-height:1.7;
   overflow-x:hidden;
   -webkit-font-smoothing:antialiased;
@@ -71,24 +81,26 @@ body{
   display:flex;justify-content:center;
 }
 a{color:inherit;text-decoration:none}
+button{font-family:inherit;background:none;border:none;cursor:pointer;color:inherit}
 .num{direction:ltr;unicode-bidi:isolate;font-variant-numeric:tabular-nums}
 
 /* ===================== שכבות הרקע ===================== */
 .sky{
   position:fixed;inset:0;z-index:0;pointer-events:none;
   background:
-    radial-gradient(58vw 46vw at var(--sx) var(--sy), var(--glow), transparent 62%),
-    radial-gradient(90vw 60vw at var(--sx) calc(var(--sy) + 14%), var(--glow2), transparent 68%),
-    radial-gradient(120vw 80vw at 50% 118%, rgba(14,34,70,.85), transparent 62%),
-    linear-gradient(180deg,#040914 0%,var(--navy-950) 42%,#061027 100%);
+    radial-gradient(52vw 42vw at var(--sx) var(--sy), var(--warm), transparent 62%),
+    radial-gradient(66vw 52vw at 10% 6%, var(--cool), transparent 62%),
+    radial-gradient(60vw 48vw at 92% 92%, rgba(74,222,128,.3), transparent 60%),
+    radial-gradient(80vw 60vw at 50% 116%, rgba(186,224,250,.55), transparent 66%),
+    linear-gradient(180deg,#FFFFFF 0%,#F4FBFF 44%,#E9F5FF 100%);
   transition:background 2.4s linear;
   animation:breathe 19s ease-in-out infinite alternate;
 }
-@keyframes breathe{from{opacity:.9;transform:scale(1)}to{opacity:1;transform:scale(1.035)}}
+@keyframes breathe{from{opacity:.92;transform:scale(1)}to{opacity:1;transform:scale(1.03)}}
 
 /* רעש עדין שמונע פסים בגרדיאנט */
 .grain{
-  position:fixed;inset:-10%;z-index:1;pointer-events:none;opacity:.05;mix-blend-mode:overlay;
+  position:fixed;inset:-10%;z-index:1;pointer-events:none;opacity:.035;mix-blend-mode:multiply;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
   animation:grain 7s steps(6) infinite;
 }
@@ -102,17 +114,98 @@ a{color:inherit;text-decoration:none}
 .veil{
   position:fixed;inset:0;z-index:3;pointer-events:none;
   background:
-    radial-gradient(64vw 52vh at 50% 42%, rgba(5,11,24,.62) 0%, rgba(5,11,24,.28) 55%, transparent 78%),
-    linear-gradient(180deg, rgba(5,11,24,.55) 0%, transparent 26%, transparent 62%, rgba(4,8,18,.72) 100%);
+    radial-gradient(58vw 46vh at 50% 44%, rgba(255,255,255,.8) 0%, rgba(255,255,255,.42) 54%, transparent 78%),
+    linear-gradient(180deg, rgba(255,255,255,.72) 0%, transparent 24%, transparent 58%, rgba(255,255,255,.5) 100%);
 }
+
+/* ===================== סרגל הניווט ===================== */
+.head{
+  position:fixed;top:0;right:0;left:0;z-index:60;
+  height:calc(var(--head-h) + env(safe-area-inset-top));
+  padding-top:env(safe-area-inset-top);
+  background:rgba(255,255,255,.78);
+  backdrop-filter:blur(16px) saturate(150%);-webkit-backdrop-filter:blur(16px) saturate(150%);
+  border-bottom:1px solid rgba(2,132,199,.1);
+  transition:box-shadow .3s, background .3s;
+}
+.head.on{box-shadow:0 10px 30px rgba(11,42,68,.07);background:rgba(255,255,255,.92)}
+.head__in{
+  max-width:1180px;margin:0 auto;height:100%;
+  display:flex;align-items:center;gap:16px;padding:0 18px;
+}
+.brand{display:flex;align-items:center;gap:9px;flex:0 0 auto}
+.brand svg{width:32px;height:32px;flex:0 0 auto}
+.brand b{font-weight:700;font-size:.98rem;line-height:1.15;letter-spacing:.005em;color:var(--ink)}
+.brand span{display:block;font-size:.63rem;font-weight:500;color:var(--muted);letter-spacing:.09em}
+
+.nav{margin-inline-start:10px}
+.nav__list{list-style:none;display:flex;align-items:center;gap:2px}
+.nav__item{position:relative}
+.nav__btn{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:.93rem;font-weight:500;color:var(--ink-2);
+  padding:9px 14px;border-radius:11px;
+  transition:color .22s, background .22s;
+}
+.nav__btn svg{width:11px;height:11px;opacity:.55;transition:transform .28s}
+.nav__btn:hover,.nav__item:focus-within .nav__btn{color:var(--sky-600);background:rgba(14,165,233,.08)}
+.nav__item:hover .nav__btn svg,.nav__item:focus-within .nav__btn svg{transform:rotate(180deg)}
+
+.sub{
+  position:absolute;top:calc(100% + 9px);inset-inline-end:0;min-width:252px;
+  background:rgba(255,255,255,.97);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border:1px solid var(--line);border-radius:16px;
+  box-shadow:0 24px 54px rgba(11,42,68,.14), 0 2px 6px rgba(11,42,68,.05);
+  padding:8px;
+  opacity:0;visibility:hidden;transform:translateY(-7px);
+  transition:opacity .26s, transform .26s, visibility .26s;
+}
+.nav__item:hover .sub,.nav__item:focus-within .sub{opacity:1;visibility:visible;transform:none}
+.sub a{
+  display:flex;align-items:center;gap:9px;
+  font-size:.88rem;font-weight:400;color:var(--ink-2);
+  padding:8px 11px;border-radius:10px;line-height:1.45;
+  transition:background .2s, color .2s, padding .2s;
+}
+.sub a::before{
+  content:"";width:5px;height:5px;border-radius:50%;flex:0 0 auto;
+  background:var(--sky-300);transition:background .2s, transform .2s;
+}
+.sub a:hover{background:rgba(14,165,233,.07);color:var(--sky-600);padding-inline-start:14px}
+.sub a:hover::before{background:var(--green-500);transform:scale(1.35)}
+.sub__note{
+  margin:6px 4px 2px;padding-top:8px;border-top:1px solid var(--line);
+  font-size:.7rem;color:var(--muted);text-align:center;letter-spacing:.02em;
+}
+
+.head__cta{
+  display:inline-flex;align-items:center;gap:7px;flex:0 0 auto;margin-inline-start:auto;
+  background:linear-gradient(135deg,var(--green-500),var(--green-600));
+  color:#fff;font-weight:600;font-size:.86rem;
+  padding:9px 16px;border-radius:11px;
+  box-shadow:0 8px 20px rgba(22,163,94,.26);
+  transition:transform .22s, box-shadow .22s;
+}
+.head__cta svg{width:15px;height:15px}
+.head__cta:hover{transform:translateY(-1px);box-shadow:0 12px 26px rgba(22,163,94,.34)}
+
+.navtoggle{
+  display:none;width:42px;height:42px;border-radius:12px;
+  align-items:center;justify-content:center;flex-direction:column;gap:4px;
+  border:1px solid var(--line);background:rgba(255,255,255,.7);margin-inline-start:auto;
+}
+.navtoggle i{display:block;width:17px;height:2px;border-radius:2px;background:var(--ink-2);transition:transform .3s, opacity .25s}
+.navtoggle[aria-expanded="true"] i:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.navtoggle[aria-expanded="true"] i:nth-child(2){opacity:0}
+.navtoggle[aria-expanded="true"] i:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
 
 /* ===================== תוכן ===================== */
 main{
   position:relative;z-index:4;
-  width:100%;max-width:760px;
-  /* margin:auto ולא align-items:center, כדי שתוכן גבוה לא ייחתך מלמעלה */
+  width:100%;max-width:780px;
   margin:auto;
-  padding:clamp(26px,4.4vh,58px) 22px clamp(24px,3.8vh,46px);
+  padding:calc(var(--head-h) + clamp(22px,3.4vh,44px)) 22px clamp(24px,3.8vh,46px);
   text-align:center;
 }
 /* מצב המנוחה גלוי, והאנימציה רק מגיעה אליו.
@@ -122,113 +215,155 @@ html.intro .rise{animation:rise .9s cubic-bezier(.2,.7,.3,1) backwards}
 .d1{animation-delay:.05s}.d2{animation-delay:.18s}.d3{animation-delay:.31s}
 .d4{animation-delay:.44s}.d5{animation-delay:.57s}.d6{animation-delay:.7s}.d7{animation-delay:.83s}
 
-/* סמל השמש */
 .mark{width:clamp(46px,5.6vh,56px);height:auto;margin:0 auto 16px;display:block;cursor:pointer;overflow:visible}
 .mark .rays{transform-origin:24px 24px;animation:spin 64s linear infinite}
 .mark .core{transform-origin:24px 24px;animation:corepulse 5.5s ease-in-out infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
-@keyframes corepulse{0%,100%{opacity:.92;transform:scale(1)}50%{opacity:1;transform:scale(1.07)}}
+@keyframes corepulse{0%,100%{opacity:.94;transform:scale(1)}50%{opacity:1;transform:scale(1.07)}}
 .mark:hover .rays{animation-duration:9s}
 
 .eyebrow{
   font-size:.75rem;font-weight:600;letter-spacing:.24em;
-  color:#FFD98A;text-transform:none;margin-bottom:14px;
-  text-shadow:0 1px 14px rgba(5,11,24,.9);
+  color:var(--green-600);margin-bottom:14px;
 }
 h1{
-  font-weight:200;line-height:1.14;letter-spacing:.01em;
+  font-weight:200;line-height:1.14;letter-spacing:.01em;color:var(--ink);
   font-size:clamp(2rem,min(7vw,6.4vh),3.5rem);
-  text-shadow:0 2px 10px rgba(5,11,24,.55),0 8px 44px rgba(5,11,24,.7);
 }
 h1 .go{
   display:block;font-weight:600;margin-top:.12em;
-  background:linear-gradient(96deg,var(--sun),var(--gold) 46%,#FFE0A3);
+  background:linear-gradient(96deg,var(--sky-500),var(--green-500) 62%,var(--green-600));
   -webkit-background-clip:text;background-clip:text;color:transparent;
-  filter:drop-shadow(0 6px 26px rgba(240,167,43,.28));
 }
-.hr{width:78px;height:1px;margin:clamp(14px,2.4vh,24px) auto;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:.85}
+.hr{width:78px;height:2px;border-radius:2px;margin:clamp(14px,2.4vh,24px) auto;
+  background:linear-gradient(90deg,transparent,var(--sky-400),var(--green-400),transparent)}
 .tag{
   font-weight:300;font-size:clamp(1rem,2.3vw,1.16rem);line-height:1.85;
-  color:rgba(244,247,252,.86);max-width:560px;margin:0 auto;
-  text-shadow:0 1px 10px rgba(5,11,24,.75);
+  color:var(--ink-2);max-width:570px;margin:0 auto;
 }
-.tag b{font-weight:500;color:#fff}
+.tag b{font-weight:600;color:var(--ink)}
 
 /* ===================== רצועת "השמש עכשיו" ===================== */
 .live{display:none;margin:clamp(20px,3vh,30px) auto 0;max-width:470px}
 .js .live{display:block}
 .live__card{
-  border:1px solid rgba(255,255,255,.1);border-radius:20px;
-  background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.018));
-  backdrop-filter:blur(9px);-webkit-backdrop-filter:blur(9px);
+  border:1px solid rgba(2,132,199,.13);border-radius:20px;
+  background:rgba(255,255,255,.86);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
   padding:15px 18px 13px;
-  box-shadow:0 20px 50px rgba(3,7,16,.42), inset 0 1px 0 rgba(255,255,255,.07);
+  box-shadow:0 20px 46px rgba(11,42,68,.09), 0 1px 0 rgba(255,255,255,.9) inset;
 }
-.live__head{display:flex;align-items:center;justify-content:center;gap:9px;font-size:.85rem;font-weight:500;color:#E4EDFA}
-.pulse{width:8px;height:8px;border-radius:50%;background:var(--sun);flex:0 0 auto;
-  box-shadow:0 0 12px rgba(255,201,77,.85);animation:pulse 3.4s ease-in-out infinite}
-@keyframes pulse{0%,100%{box-shadow:0 0 8px rgba(255,201,77,.6);opacity:.8}50%{box-shadow:0 0 20px rgba(255,201,77,1),0 0 40px rgba(240,167,43,.4);opacity:1}}
-.pulse.rest{background:#7FA6D8;box-shadow:0 0 12px rgba(127,166,216,.7);animation-duration:6s}
+.live__head{display:flex;align-items:center;justify-content:center;gap:9px;font-size:.85rem;font-weight:600;color:var(--ink)}
+.pulse{width:8px;height:8px;border-radius:50%;background:var(--green-500);flex:0 0 auto;
+  box-shadow:0 0 0 4px rgba(34,197,94,.16);animation:pulse 3.4s ease-in-out infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 3px rgba(34,197,94,.14)}50%{box-shadow:0 0 0 7px rgba(34,197,94,.05)}}
+.pulse.rest{background:var(--sky-400);box-shadow:0 0 0 4px rgba(56,189,248,.16);animation-duration:6s}
 
 .arc{display:block;width:100%;max-width:340px;height:auto;margin:2px auto;overflow:visible}
-.arc .dot{filter:drop-shadow(0 0 7px rgba(255,201,77,.95))}
-.ends{display:flex;justify-content:space-between;font-size:.74rem;color:rgba(226,236,250,.62);letter-spacing:.03em;margin-top:-2px}
-.ends span b{font-weight:500;color:rgba(244,247,252,.9)}
+.arc .dot{filter:drop-shadow(0 2px 5px rgba(22,163,94,.45))}
+.ends{display:flex;justify-content:space-between;font-size:.74rem;color:var(--muted);letter-spacing:.03em;margin-top:-2px}
+.ends span b{font-weight:600;color:var(--ink-2)}
 
 .tiles{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:11px}
 .tile{
   border-radius:14px;padding:8px 8px 7px;
-  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);
+  background:linear-gradient(180deg,rgba(234,246,255,.9),rgba(240,250,255,.6));
+  border:1px solid rgba(2,132,199,.1);
 }
-.tile b{display:block;font-size:1.3rem;font-weight:600;line-height:1.3;color:#fff;letter-spacing:.01em}
-.tile b em{font-style:normal;font-size:.62em;font-weight:400;color:rgba(244,247,252,.6);margin-inline-start:3px}
-.tile span{display:block;font-size:.73rem;color:rgba(226,236,250,.58);line-height:1.5}
-.live__note{font-size:.67rem;color:rgba(226,236,250,.4);margin-top:9px;line-height:1.55}
+.tile b{display:block;font-size:1.3rem;font-weight:700;line-height:1.3;color:var(--ink);letter-spacing:.01em}
+.tile b em{font-style:normal;font-size:.62em;font-weight:500;color:var(--muted);margin-inline-start:3px}
+.tile span{display:block;font-size:.73rem;color:var(--muted);line-height:1.5}
+.live__note{font-size:.67rem;color:var(--muted);margin-top:9px;line-height:1.55;opacity:.85}
 
 /* ===================== מה מחכה כאן ===================== */
-.hints{margin:clamp(20px,3vh,30px) auto 0;max-width:640px}
-.hints__t{font-size:.73rem;letter-spacing:.14em;color:rgba(226,236,250,.48);margin-bottom:11px}
+.hints{margin:clamp(20px,3vh,30px) auto 0;max-width:660px}
+.hints__t{font-size:.73rem;letter-spacing:.14em;color:var(--muted);margin-bottom:11px}
 .hints ul{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
 .hints li{
   position:relative;overflow:hidden;
-  border:1px solid rgba(255,255,255,.08);border-radius:15px;
-  background:rgba(255,255,255,.028);
+  border:1px solid rgba(2,132,199,.12);border-radius:15px;
+  background:rgba(255,255,255,.72);
   padding:14px 12px 13px;text-align:center;
-  transition:transform .38s cubic-bezier(.2,.7,.3,1), border-color .38s, background .38s;
+  transition:transform .38s cubic-bezier(.2,.7,.3,1), border-color .38s, background .38s, box-shadow .38s;
 }
 .hints li::after{
   content:"";position:absolute;inset:0;pointer-events:none;
-  background:radial-gradient(120% 90% at 50% -20%, rgba(240,167,43,.22), transparent 62%);
+  background:radial-gradient(120% 90% at 50% -20%, rgba(34,197,94,.14), transparent 62%);
   opacity:0;transition:opacity .38s;
 }
-.hints li:hover,.hints li:focus-within{transform:translateY(-4px);border-color:rgba(240,167,43,.42);background:rgba(255,255,255,.055)}
+.hints li:hover,.hints li:focus-within{
+  transform:translateY(-4px);border-color:rgba(34,197,94,.4);background:#fff;
+  box-shadow:0 16px 34px rgba(11,42,68,.09);
+}
 .hints li:hover::after,.hints li:focus-within::after{opacity:1}
-.hints i{display:block;font-style:normal;font-size:.63rem;letter-spacing:.22em;color:var(--gold);opacity:.8;margin-bottom:6px}
-.hints b{display:block;font-weight:600;font-size:.93rem;color:#fff;line-height:1.4}
-.hints small{display:block;font-size:.75rem;color:rgba(226,236,250,.56);line-height:1.55;margin-top:3px}
+.hints i{display:block;font-style:normal;font-size:.63rem;letter-spacing:.22em;color:var(--sky-500);margin-bottom:6px}
+.hints b{display:block;font-weight:600;font-size:.93rem;color:var(--ink);line-height:1.4}
+.hints small{display:block;font-size:.75rem;color:var(--muted);line-height:1.55;margin-top:3px}
 
 /* ===================== קריאה לפעולה ===================== */
 .cta{margin-top:clamp(20px,3.2vh,32px)}
-.cta__line{font-size:.95rem;color:rgba(244,247,252,.8);margin-bottom:13px;font-weight:300}
+.cta__line{font-size:.95rem;color:var(--ink-2);margin-bottom:13px;font-weight:300}
 .row{display:flex;gap:11px;justify-content:center;flex-wrap:wrap}
 .btn{
   display:inline-flex;align-items:center;gap:9px;
   font-weight:600;font-size:.95rem;border-radius:14px;padding:13px 24px;
-  transition:transform .24s cubic-bezier(.2,.7,.3,1), box-shadow .24s, background .24s;
+  transition:transform .24s cubic-bezier(.2,.7,.3,1), box-shadow .24s, background .24s, border-color .24s;
   border:1px solid transparent;line-height:1.2;
 }
 .btn svg{width:19px;height:19px;flex:0 0 auto}
-.btn--wa{background:var(--wa);color:#fff;box-shadow:0 10px 28px rgba(34,183,91,.3)}
-.btn--wa:hover{transform:translateY(-2px);box-shadow:0 16px 36px rgba(34,183,91,.42)}
-.btn--ghost{background:rgba(255,255,255,.06);color:#fff;border-color:rgba(255,255,255,.2);backdrop-filter:blur(6px)}
-.btn--ghost:hover{transform:translateY(-2px);background:rgba(255,255,255,.13);border-color:rgba(240,167,43,.5)}
+.btn--wa{background:linear-gradient(135deg,var(--green-500),var(--green-600));color:#fff;
+  box-shadow:0 12px 28px rgba(22,163,94,.28)}
+.btn--wa:hover{transform:translateY(-2px);box-shadow:0 18px 36px rgba(22,163,94,.36)}
+.btn--ghost{background:rgba(255,255,255,.85);color:var(--ink);border-color:rgba(2,132,199,.22);
+  box-shadow:0 8px 20px rgba(11,42,68,.05)}
+.btn--ghost:hover{transform:translateY(-2px);border-color:var(--sky-400);background:#fff}
 
-footer{margin-top:clamp(20px,3vh,32px);font-size:.73rem;color:rgba(226,236,250,.38);letter-spacing:.04em;line-height:1.8}
+footer{margin-top:clamp(20px,3vh,32px);font-size:.73rem;color:var(--muted);letter-spacing:.04em;line-height:1.8}
 
 /* ===================== מסכים קטנים ===================== */
+@media(max-width:980px){
+  .navtoggle{display:flex}
+  .nav{
+    position:fixed;top:calc(var(--head-h) + env(safe-area-inset-top));right:0;left:0;
+    min-height:calc(100dvh - var(--head-h) - env(safe-area-inset-top));
+    max-height:calc(100dvh - var(--head-h) - env(safe-area-inset-top));overflow-y:auto;
+    /* אטום לגמרי: תפריט מסך מלא חייב להסתיר את התוכן שמאחוריו */
+    background:#fff;
+    border-bottom:1px solid var(--line);
+    box-shadow:0 24px 44px rgba(11,42,68,.12);
+    padding:14px 18px calc(20px + env(safe-area-inset-bottom));
+    margin:0;text-align:start;
+    opacity:0;visibility:hidden;transform:translateY(-10px);
+    transition:opacity .28s, transform .28s, visibility .28s;
+  }
+  .nav.open{opacity:1;visibility:visible;transform:none}
+  .nav__list{display:block}
+  .nav__item{margin-bottom:6px}
+  .nav__btn{
+    display:flex;width:100%;justify-content:space-between;
+    font-size:1rem;font-weight:700;color:var(--ink);
+    padding:9px 4px;border-radius:0;
+    border-bottom:1px solid var(--line);
+  }
+  .nav__btn svg{display:none}
+  .nav__btn:hover,.nav__item:focus-within .nav__btn{background:none;color:var(--sky-600)}
+  .sub{
+    position:static;opacity:1;visibility:visible;transform:none;
+    box-shadow:none;border:none;background:none;backdrop-filter:none;
+    padding:6px 0 10px;min-width:0;
+    display:grid;grid-template-columns:1fr 1fr;gap:2px;
+  }
+  .sub a{font-size:.83rem;padding:7px 6px}
+  .sub__note{grid-column:1/-1;text-align:start;border-top:none;margin:2px 4px 0;padding-top:2px}
+  .head__cta{display:none}
+}
+@media(max-width:560px){
+  .sub{grid-template-columns:1fr}
+  .brand span{display:none}
+}
 @media(max-width:640px){
   body{align-items:flex-start}
-  main{padding-top:calc(34px + env(safe-area-inset-top));padding-bottom:calc(40px + env(safe-area-inset-bottom))}
+  main{padding-bottom:calc(40px + env(safe-area-inset-bottom))}
   .hints ul{grid-template-columns:1fr;gap:8px}
   .hints li{display:flex;align-items:baseline;justify-content:center;gap:9px;padding:12px 14px}
   .hints i{margin-bottom:0}
@@ -246,9 +381,15 @@ footer{margin-top:clamp(20px,3vh,32px);font-size:.73rem;color:rgba(226,236,250,.
 /* ===================== העדפת תנועה מופחתת ===================== */
 @media (prefers-reduced-motion:reduce){
   .sky,.grain,.mark .rays,.mark .core,.pulse,html.intro .rise{animation:none}
-  .btn:hover,.hints li:hover{transform:none}
+  .btn:hover,.hints li:hover,.head__cta:hover{transform:none}
 }
 </style>
+<noscript><style>
+  /* בלי JavaScript אין כפתור תפריט, ולכן הניווט פשוט פתוח */
+  @media(max-width:980px){.nav{position:static;opacity:1;visibility:visible;transform:none;box-shadow:none;padding:0 0 10px}
+    .navtoggle{display:none}.head{position:static;height:auto;padding-bottom:10px}
+    main{padding-top:clamp(22px,3.4vh,44px)}body{display:block}}
+</style></noscript>
 </head>
 
 <body>
@@ -257,19 +398,103 @@ footer{margin-top:clamp(20px,3vh,32px);font-size:.73rem;color:rgba(226,236,250,.
 <canvas id="stage" aria-hidden="true"></canvas>
 <div class="veil" aria-hidden="true"></div>
 
+<header class="head" id="head">
+  <div class="head__in">
+    <a class="brand" href="/" aria-label="כהן מערכות אנרגיה, לעמוד הבית">
+      <svg viewBox="0 0 48 48" aria-hidden="true">
+        <defs><linearGradient id="bg1" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#0EA5E9"/><stop offset="1" stop-color="#22C55E"/>
+        </linearGradient></defs>
+        <g stroke="#38BDF8" stroke-width="3" stroke-linecap="round" opacity=".85">
+          <line x1="24" y1="2" x2="24" y2="9"/><line x1="24" y1="39" x2="24" y2="46"/>
+          <line x1="2" y1="24" x2="9" y2="24"/><line x1="39" y1="24" x2="46" y2="24"/>
+          <line x1="8.4" y1="8.4" x2="13.2" y2="13.2"/><line x1="34.8" y1="34.8" x2="39.6" y2="39.6"/>
+          <line x1="8.4" y1="39.6" x2="13.2" y2="34.8"/><line x1="34.8" y1="13.2" x2="39.6" y2="8.4"/>
+        </g>
+        <circle cx="24" cy="24" r="11.4" fill="url(#bg1)"/>
+        <path d="M21 18.4h8.2l-4.8 9.4h-4.6l3.5-7h-3.3z" fill="#fff"/>
+      </svg>
+      <b>כהן מערכות אנרגיה<span>מערכות סולאריות לבית ולעסק</span></b>
+    </a>
+
+    <button class="navtoggle" id="navtoggle" aria-expanded="false" aria-controls="nav" aria-label="תפריט">
+      <i></i><i></i><i></i>
+    </button>
+
+    <nav class="nav" id="nav" aria-label="ניווט ראשי">
+      <ul class="nav__list">
+        <li class="nav__item">
+          <a class="nav__btn" href="/">שירותים
+            <svg viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M1 1.5 6 6.5l5-5"/></svg>
+          </a>
+          <div class="sub">
+            <a href="/">איתור ותיקון תקלות</a>
+            <a href="/">מערכות ביתיות</a>
+            <a href="/">מערכות מסחריות</a>
+            <a href="/">מודל שכירות לגג</a>
+            <a href="/">מערכות אגירה</a>
+            <a href="/">ניהול פרויקטים, ייעוץ ותכנון</a>
+            <a href="/">התקנת מערכות</a>
+            <a href="/">שירות ניטור ואחזקה</a>
+            <p class="sub__note">נפתח עם עליית האתר החדש</p>
+          </div>
+        </li>
+
+        <li class="nav__item">
+          <a class="nav__btn" href="/">חנות
+            <svg viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M1 1.5 6 6.5l5-5"/></svg>
+          </a>
+          <div class="sub">
+            <a href="/">מוצרים משלימים למערכות</a>
+            <a href="/">מוצרים לקרוואנים ואוף גריד</a>
+            <a href="/">מוצרים לאגירה</a>
+            <a href="/">גנרטורים סולאריים ותחנות כוח</a>
+            <a href="/">ציוד חירום סולארי</a>
+            <p class="sub__note">נפתח עם עליית האתר החדש</p>
+          </div>
+        </li>
+
+        <li class="nav__item">
+          <a class="nav__btn" href="/">מידע מקצועי
+            <svg viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M1 1.5 6 6.5l5-5"/></svg>
+          </a>
+          <div class="sub">
+            <a href="/">איך עובדת מערכת סולארית</a>
+            <a href="/">סוגי מערכות</a>
+            <a href="/">אסדרות</a>
+            <a href="/">תקנות וחוקים</a>
+            <a href="/">חידושים בעולם האנרגיה המתחדשת</a>
+            <p class="sub__note">נפתח עם עליית האתר החדש</p>
+          </div>
+        </li>
+
+        <li class="nav__item"><a class="nav__btn" href="/">גלריה</a></li>
+      </ul>
+    </nav>
+
+    <a class="head__cta" href="tel:+972548373494">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+      <span class="num">054-8373494</span>
+    </a>
+  </div>
+</header>
+
 <main>
   <svg class="mark rise d1" id="mark" viewBox="0 0 48 48" role="img" aria-label="כהן מערכות אנרגיה">
-    <g class="rays" stroke="#F0A72B" stroke-width="2.6" stroke-linecap="round" opacity=".92">
+    <defs><linearGradient id="mg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0EA5E9"/><stop offset="1" stop-color="#22C55E"/>
+    </linearGradient></defs>
+    <g class="rays" stroke="#38BDF8" stroke-width="2.6" stroke-linecap="round" opacity=".9">
       <line x1="24" y1="1" x2="24" y2="8"/><line x1="24" y1="40" x2="24" y2="47"/>
       <line x1="1" y1="24" x2="8" y2="24"/><line x1="40" y1="24" x2="47" y2="24"/>
       <line x1="7.7" y1="7.7" x2="12.7" y2="12.7"/><line x1="35.3" y1="35.3" x2="40.3" y2="40.3"/>
       <line x1="7.7" y1="40.3" x2="12.7" y2="35.3"/><line x1="35.3" y1="12.7" x2="40.3" y2="7.7"/>
     </g>
-    <circle class="core" cx="24" cy="24" r="11.4" fill="#F0A72B"/>
-    <path d="M21 18.4h8.2l-4.8 9.4h-4.6l3.5-7h-3.3z" fill="#0A1B33"/>
+    <circle class="core" cx="24" cy="24" r="11.4" fill="url(#mg)"/>
+    <path d="M21 18.4h8.2l-4.8 9.4h-4.6l3.5-7h-3.3z" fill="#fff"/>
   </svg>
 
-  <p class="eyebrow rise d2">כהן מערכות אנרגיה</p>
+  <p class="eyebrow rise d2">רגע לפני שהאתר החדש עולה</p>
 
   <h1 class="rise d2">
     האתר בשיפוצים
@@ -290,15 +515,15 @@ footer{margin-top:clamp(20px,3vh,32px);font-size:.73rem;color:rgba(226,236,250,.
       <svg class="arc" viewBox="0 0 320 82" aria-hidden="true">
         <defs>
           <linearGradient id="arcGrad" x1="1" y1="0" x2="0" y2="0">
-            <stop offset="0%" stop-color="#F0A72B" stop-opacity=".25"/>
-            <stop offset="55%" stop-color="#FFC94D" stop-opacity=".95"/>
-            <stop offset="100%" stop-color="#FFE0A3" stop-opacity=".9"/>
+            <stop offset="0%" stop-color="#7DD3FC" stop-opacity=".5"/>
+            <stop offset="55%" stop-color="#38BDF8" stop-opacity=".95"/>
+            <stop offset="100%" stop-color="#22C55E" stop-opacity=".95"/>
           </linearGradient>
         </defs>
-        <line x1="6" y1="70" x2="314" y2="70" stroke="rgba(255,255,255,.13)" stroke-width="1"/>
-        <path id="arcTrack" d="M296 70 Q160 -16 24 70" fill="none" stroke="rgba(255,255,255,.13)" stroke-width="1.6" stroke-dasharray="2.5 6" stroke-linecap="round"/>
-        <path id="arcDone" d="M296 70 Q160 -16 24 70" pathLength="1" fill="none" stroke="url(#arcGrad)" stroke-width="2.6" stroke-linecap="round" stroke-dasharray="1" stroke-dashoffset="1"/>
-        <circle class="dot" id="sunDot" cx="296" cy="70" r="6.4" fill="#FFC94D" opacity="0"/>
+        <line x1="6" y1="70" x2="314" y2="70" stroke="rgba(2,132,199,.16)" stroke-width="1"/>
+        <path id="arcTrack" d="M296 70 Q160 -16 24 70" fill="none" stroke="rgba(2,132,199,.2)" stroke-width="1.6" stroke-dasharray="2.5 6" stroke-linecap="round"/>
+        <path id="arcDone" d="M296 70 Q160 -16 24 70" pathLength="1" fill="none" stroke="url(#arcGrad)" stroke-width="2.8" stroke-linecap="round" stroke-dasharray="1" stroke-dashoffset="1"/>
+        <circle class="dot" id="sunDot" cx="296" cy="70" r="6.4" fill="#16A34A" opacity="0"/>
       </svg>
 
       <p class="ends">
@@ -470,8 +695,8 @@ function updateLive(){
     var p = el.track.getPointAtLength(trackLen * (isDay ? sunT : (now < day.rise ? 0 : 1)));
     el.dot.setAttribute('cx', p.x.toFixed(1));
     el.dot.setAttribute('cy', p.y.toFixed(1));
-    el.dot.setAttribute('opacity', isDay ? '1' : '.3');
-    el.dot.setAttribute('fill', isDay ? '#FFC94D' : '#7FA6D8');
+    el.dot.setAttribute('opacity', isDay ? '1' : '.45');
+    el.dot.setAttribute('fill', isDay ? '#16A34A' : '#7DD3FC');
   }
 
   if(isDay){
@@ -498,14 +723,14 @@ function updateLive(){
   var css = document.documentElement.style;
   if(isDay){
     css.setProperty('--sx', (86 - sunT*72).toFixed(1) + '%');
-    css.setProperty('--sy', (60 - Math.sin(Math.PI*sunT)*44).toFixed(1) + '%');
-    css.setProperty('--glow', 'rgba(240,167,43,.34)');
-    css.setProperty('--glow2', 'rgba(255,201,77,.16)');
+    css.setProperty('--sy', (58 - Math.sin(Math.PI*sunT)*44).toFixed(1) + '%');
+    css.setProperty('--warm', 'rgba(255,214,150,.34)');
+    css.setProperty('--cool', 'rgba(125,211,252,.42)');
   }else{
     css.setProperty('--sx', now < day.rise ? '88%' : '12%');
-    css.setProperty('--sy', '74%');
-    css.setProperty('--glow', 'rgba(86,132,200,.20)');
-    css.setProperty('--glow2', 'rgba(120,90,190,.10)');
+    css.setProperty('--sy', '72%');
+    css.setProperty('--warm', 'rgba(186,214,250,.34)');
+    css.setProperty('--cool', 'rgba(148,190,240,.4)');
   }
   return {kw:kw, isDay:isDay, t:sunT};
 }
@@ -520,17 +745,17 @@ else { solar = updateLive(); setInterval(function(){ solar = updateLive(); }, 30
 var cv = document.getElementById('stage'), ctx = cv.getContext('2d');
 var W = 0, H = 0, DPR = 1, horizon = 0, K = 0, colW = 0;
 var ROWS = 14, COLS = 30, zOf = [], yOf = [], colSin = [], colCos = [];
-var photons = [], ripples = [], sprite = null;
+var motes = [], ripples = [], sprites = [];
 
-function makeSprite(){
-  var s = document.createElement('canvas'), n = 36;
+function makeSprite(rgb){
+  var s = document.createElement('canvas'), n = 44;
   s.width = s.height = n;
   var c = s.getContext('2d'), g = c.createRadialGradient(n/2,n/2,0,n/2,n/2,n/2);
-  g.addColorStop(0,'rgba(255,214,140,1)');
-  g.addColorStop(.25,'rgba(240,167,43,.55)');
-  g.addColorStop(1,'rgba(240,167,43,0)');
+  g.addColorStop(0,'rgba('+rgb+',.55)');
+  g.addColorStop(.45,'rgba('+rgb+',.18)');
+  g.addColorStop(1,'rgba('+rgb+',0)');
   c.fillStyle = g; c.fillRect(0,0,n,n);
-  sprite = s;
+  return s;
 }
 
 function layout(){
@@ -561,22 +786,23 @@ function layout(){
   colSin.length = 0; colCos.length = 0;
   for(var j = 0; j <= COLS; j++){ colSin.push(Math.sin(j*0.06)); colCos.push(Math.cos(j*0.06)); }
 
-  photons.length = 0;
-  var n = W < 700 ? 20 : 40;
-  for(var p = 0; p < n; p++) photons.push(newPhoton(true));
+  motes.length = 0;
+  var n = W < 700 ? 16 : 30;
+  for(var p = 0; p < n; p++) motes.push(newMote(true));
   if(lx === 0 && ly === 0){ lx = tx = W*0.5; ly = ty = horizon + (H - horizon)*0.5; }
   return true;
 }
 
-function newPhoton(spread){
+function newMote(spread){
   return {
     x: Math.random()*W,
-    y: spread ? horizon + Math.random()*(H - horizon) + Math.random()*horizon*0.5 : H + 20,
-    r: 1.2 + Math.random()*2.6,
-    sp: 9 + Math.random()*26,
+    y: spread ? Math.random()*H : H + 24,
+    r: 2.4 + Math.random()*5.4,
+    sp: 7 + Math.random()*20,
     dr: (Math.random() - .5)*16,
     ph: Math.random()*6.283,
-    a: .18 + Math.random()*.5
+    a: .3 + Math.random()*.55,
+    s: Math.random() < .45 ? 1 : 0     /* 0 תכלת, 1 ירוק */
   };
 }
 
@@ -591,7 +817,7 @@ function drawGrid(t){
   for(var i = ROWS - 1; i >= 0; i--){
     var yA = yOf[i], yB = yOf[i+1];
     if(yA - yB < 0.7) continue;
-    var fade = Math.pow(1 - i/(ROWS - 1), 0.85);
+    var fade = Math.pow(1 - i/(ROWS - 1), 0.9);
     var my = (yA + yB)/2, dy = my - ly, dy2 = dy*dy;
 
     /* גל האור מפורק ל-sin(a+b) כדי לחסוך קריאות טריגונומטריה בכל תא */
@@ -605,7 +831,7 @@ function drawGrid(t){
 
       var mx = (x0 + x1 + x2 + x3)*0.25;
 
-      /* התכווצות קלה כדי ליצור מסגרת בין הפאנלים */
+      /* התכווצות קלה כדי ליצור מסגרת לבנה בין הפאנלים */
       var k = 0.90;
       var ax = mx + (x0 - mx)*k, ay = my + (yA - my)*k;
       var bx = mx + (x1 - mx)*k;
@@ -633,15 +859,17 @@ function drawGrid(t){
         }
       }
 
-      var base = 0.13 + 0.09*wave + 0.06*sheen;
-      ctx.fillStyle = 'rgba(19,48,96,' + (base*fade + 0.035).toFixed(3) + ')';
+      /* זכוכית תכלת על רקע לבן. הרווחים הלבנים בין התאים הם המסגרות */
+      var base = 0.2 + 0.11*wave + 0.07*sheen;
+      ctx.fillStyle = 'rgba(56,141,196,' + (base*fade + 0.02).toFixed(3) + ')';
       ctx.beginPath();
       ctx.moveTo(ax, ay); ctx.lineTo(bx, ay); ctx.lineTo(cx2, cy); ctx.lineTo(dx2, cy);
       ctx.closePath(); ctx.fill();
 
-      var hot = (glow*0.55 + rip*0.7 + sheen*wave*0.09)*fade;
+      /* הדגשה ירוקה סביב הסמן ובאדוות, מדודה כדי לא להציף את הלבן */
+      var hot = (glow*0.3 + rip*0.42 + sheen*wave*0.04)*fade;
       if(hot > 0.012){
-        ctx.fillStyle = 'rgba(240,167,43,' + Math.min(0.5, hot).toFixed(3) + ')';
+        ctx.fillStyle = 'rgba(34,197,94,' + Math.min(0.24, hot).toFixed(3) + ')';
         ctx.fill();
       }
     }
@@ -652,29 +880,28 @@ function drawGrid(t){
   ctx.translate(sunX, horizon);
   ctx.scale(1, 0.2);
   var hg = ctx.createRadialGradient(0, 0, 0, 0, 0, W*0.5);
-  hg.addColorStop(0, solar.isDay ? 'rgba(255,196,100,.17)' : 'rgba(126,166,220,.09)');
-  hg.addColorStop(.45, solar.isDay ? 'rgba(240,167,43,.07)' : 'rgba(110,150,210,.04)');
-  hg.addColorStop(1, 'rgba(240,167,43,0)');
+  hg.addColorStop(0, solar.isDay ? 'rgba(255,244,214,.5)' : 'rgba(219,236,252,.4)');
+  hg.addColorStop(.45, solar.isDay ? 'rgba(255,248,230,.2)' : 'rgba(226,240,254,.16)');
+  hg.addColorStop(1, 'rgba(255,255,255,0)');
   ctx.fillStyle = hg;
   ctx.fillRect(-W, -W*0.5, W*2, W);
   ctx.restore();
 }
 
-function drawPhotons(dt, t){
-  if(!sprite) makeSprite();
-  for(var i = 0; i < photons.length; i++){
-    var p = photons[i];
+function drawMotes(dt, t){
+  if(!sprites.length){ sprites = [makeSprite('56,189,248'), makeSprite('34,197,94')]; }
+  for(var i = 0; i < motes.length; i++){
+    var p = motes[i];
     if(!reduced){
       p.y -= p.sp*dt;
       p.x += Math.sin(t*0.6 + p.ph)*p.dr*dt;
-      if(p.y < -30){ photons[i] = newPhoton(false); continue; }
+      if(p.y < -40){ motes[i] = newMote(false); continue; }
     }
-    var life = Math.max(0, Math.min(1, (H - p.y)/(H*0.75)));
-    var a = p.a*(1 - life*0.75)*(solar.isDay ? 1 : 0.45);
+    var a = p.a*(solar.isDay ? 1 : 0.5);
     if(a <= 0.01) continue;
-    var s = p.r*7;
+    var s = p.r*6;
     ctx.globalAlpha = a;
-    ctx.drawImage(sprite, p.x - s/2, p.y - s/2, s, s);
+    ctx.drawImage(sprites[p.s], p.x - s/2, p.y - s/2, s, s);
   }
   ctx.globalAlpha = 1;
 }
@@ -697,7 +924,7 @@ function frame(now){
 
   ctx.clearRect(0, 0, W, H);
   drawGrid(t);
-  drawPhotons(dt, t);
+  drawMotes(dt, t);
 
   /* ריכוך המספרים כאן, כדי שיזוזו חלק ולא בקפיצות של שנייה */
   var e = Math.min(1, dt*2.2);
@@ -731,16 +958,16 @@ window.addEventListener('pointermove', function(e){
 function pop(x, y){
   ripples.push({x:x, y:y, t0:performance.now()/1000});
   if(ripples.length > 4) ripples.shift();
-  for(var i = 0; i < 6; i++){
-    var p = newPhoton(false);
+  for(var i = 0; i < 5; i++){
+    var p = newMote(false);
     p.x = x + (Math.random() - .5)*70; p.y = y + (Math.random() - .5)*30;
-    p.sp = 30 + Math.random()*50; p.a = .5 + Math.random()*.4;
-    photons.push(p);
+    p.sp = 26 + Math.random()*44; p.a = .5 + Math.random()*.4;
+    motes.push(p);
   }
-  if(photons.length > 90) photons.splice(0, photons.length - 90);
+  if(motes.length > 70) motes.splice(0, motes.length - 70);
 }
 window.addEventListener('pointerdown', function(e){
-  if(e.target.closest && e.target.closest('a,button,li')) return;
+  if(e.target.closest && e.target.closest('a,button,li,.head,.nav')) return;
   pop(e.clientX, e.clientY);
 }, {passive:true});
 
@@ -751,7 +978,7 @@ if(mark) mark.addEventListener('click', function(){
   pop(r.left + r.width/2, r.top + r.height/2);
 });
 
-makeSprite();
+sprites = [makeSprite('56,189,248'), makeSprite('34,197,94')];
 layout();
 
 if(reduced){
@@ -766,11 +993,34 @@ function staticDraw(){
   if(!layout() && (W < 2 || H < 2)) return;
   ctx.clearRect(0, 0, W, H);
   drawGrid(0);
-  drawPhotons(0, 0);
+  drawMotes(0, 0);
 }
 
 /* =====================================================================
-   4. וואטסאפ עם הודעה מוכנה
+   4. תפריט: פתיחה בנייד, וסגירה בכל בחירה
+   ===================================================================== */
+var nav = document.getElementById('nav'), toggle = document.getElementById('navtoggle');
+if(nav && toggle){
+  toggle.addEventListener('click', function(){
+    var open = nav.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && nav.classList.contains('open')) toggle.click();
+  });
+}
+
+/* צל עדין לסרגל אחרי גלילה */
+var head = document.getElementById('head');
+if(head){
+  var onScroll = function(){ head.classList.toggle('on', window.scrollY > 8); };
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+}
+
+/* =====================================================================
+   5. וואטסאפ עם הודעה מוכנה
    ===================================================================== */
 var wa = document.getElementById('waLink');
 if(wa) wa.href = 'https://wa.me/972548373494?text=' +
